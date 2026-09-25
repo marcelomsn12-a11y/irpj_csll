@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conferência de IRPJ e CSLL com Retenções e Créditos</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #1d4ed8;
+      --primary-soft: #dbeafe;
+      --success-soft: #ecfdf5;
+      --success-border: #a7f3d0;
+      --warning-soft: #fff7ed;
+      --warning-border: #fed7aa;
+      --border: #e5e7eb;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #eef4ff 0%, var(--bg) 48%);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .header { margin-bottom: 24px; }
+
+    .header h1 {
+      margin: 0 0 8px;
+      font-size: 2rem;
+    }
+
+    .header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      max-width: 980px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 22px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .section-title h2,
+    .section-title h3 { margin: 0; }
+
+    .badge {
+      background: var(--primary-soft);
+      color: var(--primary);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.84rem;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field label {
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    .field small {
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .full { grid-column: 1 / -1; }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      font-size: 1rem;
+      background: #fff;
+      transition: 0.2s border-color, 0.2s box-shadow;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 88px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(29, 78, 216, 0.12);
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+
+    button:hover { transform: translateY(-1px); }
+    button:active { transform: translateY(0); }
+
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-secondary { background: #eef2ff; color: #3730a3; }
+    .btn-neutral { background: #f3f4f6; color: #111827; }
+
+    .tag-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .tag {
+      font-size: 0.8rem;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #374151;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .summary-box {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .summary-box .label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .summary-box .value {
+      font-size: 1.35rem;
+      font-weight: bold;
+      word-break: break-word;
+    }
+
+    .summary-box.success {
+      background: var(--success-soft);
+      border-color: var(--success-border);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 18px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 520px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    th { background: #f8fafc; }
+    tr:last-child td { border-bottom: none; }
+    .right { text-align: right; }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      background: var(--warning-soft);
+      border: 1px solid var(--warning-border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .hidden { display: none !important; }
+
+    .mini-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      background: #fcfcfd;
+      margin-top: 16px;
+    }
+
+    .mini-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+    }
+
+    .mini-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.92rem;
+    }
+
+    .periodo-box {
+      margin-top: 16px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 14px;
+      padding: 14px;
+      background: #f8fafc;
+    }
+
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .kpi {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      background: #fff;
+    }
+
+    .kpi .label {
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 6px;
+    }
+
+    .kpi .value {
+      font-weight: bold;
+      font-size: 1.05rem;
+    }
+
+
+
+    .calc-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .calc-detail {
+      border: 1px solid #bfdbfe;
+      border-radius: 16px;
+      padding: 16px;
+      background: #eff6ff;
+    }
+
+    .calc-detail h3 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+      color: #1d4ed8;
+    }
+
+    .calc-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(29, 78, 216, 0.14);
+      font-size: 0.92rem;
+    }
+
+    .calc-line:last-child { border-bottom: none; }
+
+    .calc-line strong {
+      color: #111827;
+      text-align: right;
+    }
+
+    .highlight-rate {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #1d4ed8;
+      color: #fff;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+
+
+    .credito-table-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .credito-real-box {
+      margin-top: 16px;
+      border: 1px solid #bfdbfe;
+      border-radius: 16px;
+      padding: 16px;
+      background: #eff6ff;
+    }
+
+    .credito-real-box h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .credito-real-box p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 0.92rem;
+    }
+
+    .credito-input {
+      padding: 9px 10px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+    }
+
+    .btn-small {
+      padding: 9px 12px;
+      font-size: 0.9rem;
+      border-radius: 10px;
+    }
+
+    .btn-danger {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .total-creditos {
+      margin-top: 12px;
+      text-align: right;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    @media print {
+      @page { margin: 12mm; }
+
+      body {
+        background: white;
+      }
+
+      body * {
+        visibility: hidden !important;
+      }
+
+      #areaExportacao,
+      #areaExportacao * {
+        visibility: visible !important;
+      }
+
+      #areaExportacao {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+
+      .container {
+        max-width: none;
+        padding: 0;
+      }
+
+      .grid {
+        display: block;
+      }
+
+      .actions,
+      .header,
+      .card:first-child {
+        display: none !important;
+      }
+
+      .section-title {
+        margin-bottom: 14px;
+      }
+
+      .kpis,
+      .summary-grid,
+      .calc-detail-grid {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      .mini-card,
+      .footer-note,
+      .table-wrap {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .grid { grid-template-columns: 1fr; }
+      .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 16px; }
+      .header h1 { font-size: 1.55rem; }
+      .form-grid,
+      .summary-grid,
+      .calc-detail-grid,
+      .kpis { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Conferência de IRPJ e CSLL</h1>
+      <p>
+        Calculadora interativa para apoio na conferência de <strong>IRPJ</strong> e <strong>CSLL</strong> em empresas no
+        <strong>Lucro Presumido</strong> e no <strong>Lucro Real</strong>, com cálculo mensal ou trimestral e adicional de IRPJ parametrizável.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="section-title">
+          <h2>Parâmetros da apuração</h2>
+          <span class="badge">Entrada de dados</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label for="regime">Regime tributário</label>
+            <select id="regime">
+              <option value="presumido">Lucro Presumido</option>
+              <option value="real">Lucro Real</option>
+            </select>
+            <small>Define as regras principais do cálculo.</small>
+          </div>
+
+          <div class="field">
+            <label for="periodicidade">Periodicidade</label>
+            <select id="periodicidade">
+              <option value="mensal">Mensal</option>
+              <option value="trimestral" selected>Trimestral</option>
+            </select>
+            <small>Usado para exibir a referência da apuração e o limite do adicional do IRPJ.</small>
+          </div>
+
+          <div class="field">
+            <label for="referencia">Referência</label>
+            <input id="referencia" type="text" placeholder="Ex.: 03/2026 ou 1º trimestre/2026" />
+            <small>Campo livre para identificar o período conferido.</small>
+          </div>
+
+          <div class="field">
+            <label for="tipoAtividade">Tipo de atividade</label>
+            <select id="tipoAtividade">
+              <option value="comercio">Comércio / Indústria</option>
+              <option value="servico">Serviços em geral</option>
+              <option value="transporte">Transporte de cargas</option>
+              <option value="financeira">Receitas financeiras / outras</option>
+            </select>
+            <small>Usado para definir os percentuais de presunção no lucro presumido.</small>
+          </div>
+
+          <div class="field">
+            <label for="faturamento">Faturamento / Receita bruta</label>
+            <input id="faturamento" type="number" min="0" step="0.01" placeholder="0,00" />
+            <small>Informe a receita principal do período antes das retenções.</small>
+          </div>
+
+          <div class="field">
+            <label for="retencoes">Retenções a deduzir da receita bruta</label>
+            <input id="retencoes" type="number" min="0" step="0.01" placeholder="0,00" value="0" />
+            <small>Informe as retenções/deduções que serão subtraídas da receita bruta.</small>
+          </div>
+
+          <div class="field">
+            <label for="outrasReceitas">Outras receitas tributáveis</label>
+            <input id="outrasReceitas" type="number" min="0" step="0.01" placeholder="0,00" value="0" />
+            <small>Ex.: receitas financeiras, aluguéis, demais receitas.</small>
+          </div>
+
+          <div class="field regime-real hidden">
+            <label for="custosDespesas">Custos e despesas dedutíveis</label>
+            <input id="custosDespesas" type="number" min="0" step="0.01" value="0" />
+            <small>Utilizado na estimativa do lucro real.</small>
+          </div>
+
+          <div class="field regime-real hidden">
+            <label for="adicoes">Adições ao lucro</label>
+            <input id="adicoes" type="number" min="0" step="0.01" value="0" />
+            <small>Ajustes que elevam a base tributável.</small>
+          </div>
+
+          <div class="field regime-real hidden">
+            <label for="exclusoes">Exclusões / compensações</label>
+            <input id="exclusoes" type="number" min="0" step="0.01" value="0" />
+            <small>Ajustes que reduzem a base tributável.</small>
+          </div>
+
+          <div class="field full regime-real hidden">
+            <div class="credito-real-box">
+              <h3>Créditos sobre operações da atividade</h3>
+              <p>Campo manual para informar créditos do Lucro Real que serão abatidos do total de IRPJ + CSLL apurado.</p>
+              <div class="table-wrap">
+                <table id="tabelaCreditosReal">
+                  <thead>
+                    <tr>
+                      <th>Descrição</th>
+                      <th class="right">Valor do crédito</th>
+                      <th>Ação</th>
+                    </tr>
+                  </thead>
+                  <tbody id="creditosRealBody">
+                    <tr>
+                      <td><input class="credito-input credito-descricao" type="text" placeholder="Ex.: Crédito sobre operações da atividade" /></td>
+                      <td><input class="credito-input credito-valor" type="number" min="0" step="0.01" value="0" /></td>
+                      <td><button type="button" class="btn-small btn-danger btnRemoverCredito">Remover</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="credito-table-actions">
+                <button type="button" class="btn-small btn-secondary" id="btnAdicionarCredito">Adicionar crédito</button>
+              </div>
+              <div class="total-creditos">Total de créditos informados: <span id="totalCreditosReal">R$ 0,00</span></div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="aliquotaCsll">Alíquota da CSLL (%)</label>
+            <input id="aliquotaCsll" type="number" min="0" step="0.01" value="9" />
+            <small>Parametrizável conforme a necessidade da conferência.</small>
+          </div>
+
+          <div class="field">
+            <label for="limiteAdicionalIrpj">Limite para adicional do IRPJ</label>
+            <input id="limiteAdicionalIrpj" type="number" min="0" step="0.01" value="60000" />
+            <small>Padrão trimestral: R$ 60.000,00. No mensal, o sistema sugere R$ 20.000,00.</small>
+          </div>
+
+          <div class="field">
+            <label for="aliquotaAdicionalIrpj">Adicional IRPJ (%)</label>
+            <input id="aliquotaAdicionalIrpj" type="number" min="0" step="0.01" value="10" />
+            <small>Percentual aplicado sobre a parcela da base que exceder o limite informado.</small>
+          </div>
+
+          <div class="field full">
+            <label for="observacoes">Observações</label>
+            <textarea id="observacoes" placeholder="Anotações da conferência, ajustes específicos, memória de cálculo, ressalvas..."></textarea>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn-primary" id="btnCalcular">Calcular IRPJ e CSLL</button>
+          <button class="btn-secondary" id="btnLimpar">Limpar</button>
+          <button class="btn-neutral" id="btnPdf">Exportar PDF - Resumo</button>
+          <button class="btn-neutral" id="btnExcel">Exportar Excel/CSV</button>
+        </div>
+
+        <div class="tag-row">
+          <span class="tag">IRPJ 15% + adicional parametrizável</span>
+          <span class="tag">CSLL configurável</span>
+          <span class="tag">Mensal e trimestral</span>
+          <span class="tag">Lucro Presumido e Lucro Real</span>
+        </div>
+
+        <div class="periodo-box" id="regraPeriodo">
+          Referência padrão para adicional do IRPJ: trimestral = R$ 60.000,00.
+        </div>
+      </div>
+
+      <div class="card" id="areaExportacao">
+        <div class="section-title">
+          <h2>Resumo da apuração</h2>
+          <span class="badge">Resultado automático</span>
+        </div>
+
+        <div class="kpis">
+          <div class="kpi">
+            <div class="label">Receita total</div>
+            <div class="value" id="kpiReceita">R$ 0,00</div>
+          </div>
+          <div class="kpi">
+            <div class="label">Regime</div>
+            <div class="value" id="kpiRegime">Lucro Presumido</div>
+          </div>
+          <div class="kpi">
+            <div class="label">Periodicidade</div>
+            <div class="value" id="kpiPeriodicidade">Trimestral</div>
+          </div>
+          <div class="kpi">
+            <div class="label">Referência</div>
+            <div class="value" id="kpiReferencia">Não informada</div>
+          </div>
+        </div>
+
+        <div class="summary-grid">
+          <div class="summary-box">
+            <div class="label">Receita bruta informada</div>
+            <div class="value" id="resReceitaBruta">R$ 0,00</div>
+          </div>
+          <div class="summary-box">
+            <div class="label">Retenções deduzidas</div>
+            <div class="value" id="resRetencoes">R$ 0,00</div>
+          </div>
+          <div class="summary-box">
+            <div class="label">Base de cálculo IRPJ</div>
+            <div class="value" id="resBaseIrpj">R$ 0,00</div>
+          </div>
+          <div class="summary-box">
+            <div class="label">Base de cálculo CSLL</div>
+            <div class="value" id="resBaseCsll">R$ 0,00</div>
+          </div>
+          <div class="summary-box">
+            <div class="label">IRPJ</div>
+            <div class="value" id="resIrpj">R$ 0,00</div>
+          </div>
+          <div class="summary-box">
+            <div class="label">CSLL</div>
+            <div class="value" id="resCsll">R$ 0,00</div>
+          </div>
+          <div class="summary-box regime-real hidden">
+            <div class="label">Créditos informados</div>
+            <div class="value" id="resCreditosReal">R$ 0,00</div>
+          </div>
+          <div class="summary-box success full">
+            <div class="label">Total líquido de IRPJ + CSLL</div>
+            <div class="value" id="resTotal">R$ 0,00</div>
+          </div>
+        </div>
+
+        <div class="calc-detail-grid">
+          <div class="calc-detail">
+            <h3>Base de cálculo do IRPJ</h3>
+            <div class="calc-line"><span>Faturamento bruto</span><strong id="detFaturamentoIrpj">R$ 0,00</strong></div>
+            <div class="calc-line"><span>(-) Retenções</span><strong id="detRetencoesIrpj">R$ 0,00</strong></div>
+            <div class="calc-line"><span>Receita líquida para base</span><strong id="detReceitaLiquidaIrpj">R$ 0,00</strong></div>
+            <div class="calc-line"><span>Percentual de presunção/base</span><strong><span class="highlight-rate" id="detPercIrpj">8,00%</span></strong></div>
+            <div class="calc-line"><span>Base sobre faturamento</span><strong id="detBaseFaturamentoIrpj">R$ 0,00</strong></div>
+            <div class="calc-line"><span>Outras receitas</span><strong id="detOutrasIrpj">R$ 0,00</strong></div>
+            <div class="calc-line"><span>Base final IRPJ</span><strong id="detBaseFinalIrpj">R$ 0,00</strong></div>
+          </div>
+
+          <div class="calc-detail">
+            <h3>Base de cálculo da CSLL</h3>
+            <div class="calc-line"><span>Faturamento bruto</span><strong id="detFaturamentoCsll">R$ 0,00</strong></div>
+            <div class="calc-line"><span>(-) Retenções</span><strong id="detRetencoesCsll">R$ 0,00</strong></div>
+            <div class="calc-line"><span>Receita líquida para base</span><strong id="detReceitaLiquidaCsll">R$ 0,00</strong></div>
+            <div class="calc-line"><span>Percentual de presunção/base</span><strong><span class="highlight-rate" id="detPercCsll">12,00%</span></strong></div>
+            <div class="calc-line"><span>Base sobre faturamento</span><strong id="detBaseFaturamentoCsll">R$ 0,00</strong></div>
+            <div class="calc-line"><span>Outras receitas</span><strong id="detOutrasCsll">R$ 0,00</strong></div>
+            <div class="calc-line"><span>Base final CSLL</span><strong id="detBaseFinalCsll">R$ 0,00</strong></div>
+          </div>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Tributo</th>
+                <th>Presunção/Base</th>
+                <th>Base de cálculo</th>
+                <th>Alíquota do imposto</th>
+                <th class="right">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>IRPJ</td>
+                <td><span class="highlight-rate" id="presuncaoIrpjTabela">8,00%</span></td>
+                <td id="baseIrpjTabela">R$ 0,00</td>
+                <td id="aliqIrpj">15%</td>
+                <td class="right" id="valorIrpjTabela">R$ 0,00</td>
+              </tr>
+              <tr>
+                <td>CSLL</td>
+                <td><span class="highlight-rate" id="presuncaoCsllTabela">12,00%</span></td>
+                <td id="baseCsllTabela">R$ 0,00</td>
+                <td id="aliqCsll">9%</td>
+                <td class="right" id="valorCsllTabela">R$ 0,00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Cenário de parcelamento</th>
+                <th>Valor original da cota</th>
+                <th>Juros</th>
+                <th class="right">Valor a pagar</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1ª cota</td>
+                <td id="cota1Original">R$ 0,00</td>
+                <td>0,00%</td>
+                <td class="right" id="cota1Valor">R$ 0,00</td>
+              </tr>
+              <tr>
+                <td>2ª cota</td>
+                <td id="cota2Original">R$ 0,00</td>
+                <td><span class="highlight-rate">1,00%</span></td>
+                <td class="right" id="cota2Valor">R$ 0,00</td>
+              </tr>
+              <tr>
+                <td>3ª cota</td>
+                <td id="cota3Original">R$ 0,00</td>
+                <td><span class="highlight-rate">2,00%</span></td>
+                <td class="right" id="cota3Valor">R$ 0,00</td>
+              </tr>
+              <tr>
+                <td><strong>Total parcelado em 3 cotas</strong></td>
+                <td id="totalOriginalParcelado">R$ 0,00</td>
+                <td id="totalJurosParcelamento">R$ 0,00</td>
+                <td class="right"><strong id="totalParcelado">R$ 0,00</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mini-card">
+          <h3>Cenário de parcelamento em 3 cotas</h3>
+          <p id="mensagemParcelamento">Após calcular, o sistema demonstrará a divisão em 3 cotas, com acréscimo de 1% na 2ª cota e 2% na 3ª cota.</p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Memória do cálculo</h3>
+          <p id="mensagemRegras">Preencha os campos à esquerda para visualizar a memória de cálculo da apuração.</p>
+        </div>
+
+        <div class="mini-card">
+          <h3>Observações da conferência</h3>
+          <p id="saidaObservacoes">Nenhuma observação informada.</p>
+        </div>
+
+        <div class="footer-note">
+          Ferramenta de apoio para conferência. Os cálculos podem exigir ajustes conforme atividade, exclusões legais, incentivos, adições específicas, receitas segregadas e demais particularidades fiscais da empresa.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const el = (id) => document.getElementById(id);
+
+    const regimeEl = el('regime');
+    const periodicidadeEl = el('periodicidade');
+    const referenciaEl = el('referencia');
+    const tipoAtividadeEl = el('tipoAtividade');
+    const faturamentoEl = el('faturamento');
+    const retencoesEl = el('retencoes');
+    const outrasReceitasEl = el('outrasReceitas');
+    const custosDespesasEl = el('custosDespesas');
+    const adicoesEl = el('adicoes');
+    const exclusoesEl = el('exclusoes');
+    const aliquotaCsllEl = el('aliquotaCsll');
+    const limiteAdicionalIrpjEl = el('limiteAdicionalIrpj');
+    const aliquotaAdicionalIrpjEl = el('aliquotaAdicionalIrpj');
+    const observacoesEl = el('observacoes');
+    const regraPeriodoEl = el('regraPeriodo');
+    const creditosRealBodyEl = el('creditosRealBody');
+    const btnAdicionarCreditoEl = el('btnAdicionarCredito');
+
+    const realFields = document.querySelectorAll('.regime-real');
+
+    function formatCurrency(value) {
+      return new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      }).format(Number(value || 0));
+    }
+
+    function formatPercent(value) {
+      return `${Number(value || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}%`;
+    }
+
+    function getNumber(input) {
+      const value = parseFloat(input.value);
+      return isNaN(value) ? 0 : value;
+    }
+
+    function updatePeriodicidadeDefaults() {
+      if (periodicidadeEl.value === 'mensal' && Number(limiteAdicionalIrpjEl.value || 0) === 60000) {
+        limiteAdicionalIrpjEl.value = '20000';
+      }
+      if (periodicidadeEl.value === 'trimestral' && Number(limiteAdicionalIrpjEl.value || 0) === 20000) {
+        limiteAdicionalIrpjEl.value = '60000';
+      }
+
+      regraPeriodoEl.textContent = periodicidadeEl.value === 'mensal'
+        ? 'Referência padrão para adicional do IRPJ: mensal = R$ 20.000,00. Você pode alterar esse valor manualmente.'
+        : 'Referência padrão para adicional do IRPJ: trimestral = R$ 60.000,00. Você pode alterar esse valor manualmente.';
+    }
+
+    function updateVisibility() {
+      const isReal = regimeEl.value === 'real';
+      realFields.forEach(item => item.classList.toggle('hidden', !isReal));
+    }
+
+    function getPresuncaoIRPJ(tipo) {
+      const mapa = {
+        comercio: 0.08,
+        servico: 0.32,
+        transporte: 0.08,
+        financeira: 0.32
+      };
+      return mapa[tipo] || 0.08;
+    }
+
+    function getPresuncaoCSLL(tipo) {
+      const mapa = {
+        comercio: 0.12,
+        servico: 0.32,
+        transporte: 0.12,
+        financeira: 0.32
+      };
+      return mapa[tipo] || 0.12;
+    }
+
+    function calcularIRPJ(base, limiteAdicional, aliquotaAdicional) {
+      const irpj15 = base * 0.15;
+      const excedente = Math.max(base - limiteAdicional, 0);
+      const adicional = excedente * (aliquotaAdicional / 100);
+      return {
+        valor: irpj15 + adicional,
+        irpj15,
+        adicional,
+        excedente,
+        aliquotaTexto: adicional > 0 ? `15% + adicional ${formatPercent(aliquotaAdicional)}` : '15%'
+      };
+    }
+
+    function calcularCSLL(base, aliquotaCsll) {
+      return {
+        valor: base * (aliquotaCsll / 100),
+        aliquotaTexto: formatPercent(aliquotaCsll)
+      };
+    }
+
+    function calcularTotalCreditosReal() {
+      if (!creditosRealBodyEl) return 0;
+      return Array.from(creditosRealBodyEl.querySelectorAll('.credito-valor')).reduce((total, input) => total + getNumber(input), 0);
+    }
+
+    function adicionarLinhaCredito(descricao = '', valor = '0') {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input class="credito-input credito-descricao" type="text" placeholder="Ex.: Crédito sobre operações da atividade" value="${descricao}" /></td>
+        <td><input class="credito-input credito-valor" type="number" min="0" step="0.01" value="${valor}" /></td>
+        <td><button type="button" class="btn-small btn-danger btnRemoverCredito">Remover</button></td>
+      `;
+      creditosRealBodyEl.appendChild(tr);
+    }
+
+    function garantirUmaLinhaCredito() {
+      if (creditosRealBodyEl && creditosRealBodyEl.children.length === 0) {
+        adicionarLinhaCredito();
+      }
+    }
+
+    function calcular() {
+      const regime = regimeEl.value;
+      const periodicidade = periodicidadeEl.value;
+      const referencia = referenciaEl.value.trim() || 'Não informada';
+      const tipoAtividade = tipoAtividadeEl.value;
+      const faturamento = getNumber(faturamentoEl);
+      const retencoes = Math.min(getNumber(retencoesEl), faturamento);
+      const receitaLiquidaAtividade = Math.max(faturamento - retencoes, 0);
+      const outrasReceitas = getNumber(outrasReceitasEl);
+      const custosDespesas = getNumber(custosDespesasEl);
+      const adicoes = getNumber(adicoesEl);
+      const exclusoes = getNumber(exclusoesEl);
+      const aliquotaCsll = getNumber(aliquotaCsllEl);
+      const limiteAdicionalIrpj = getNumber(limiteAdicionalIrpjEl);
+      const aliquotaAdicionalIrpj = getNumber(aliquotaAdicionalIrpjEl);
+      const receitaTotal = receitaLiquidaAtividade + outrasReceitas;
+
+      let baseIrpj = 0;
+      let baseCsll = 0;
+      let baseFaturamentoIrpj = 0;
+      let baseFaturamentoCsll = 0;
+      let percIrpj = 0;
+      let percCsll = 0;
+      let regraTexto = '';
+
+      if (regime === 'presumido') {
+        percIrpj = getPresuncaoIRPJ(tipoAtividade);
+        percCsll = getPresuncaoCSLL(tipoAtividade);
+        baseFaturamentoIrpj = receitaLiquidaAtividade * percIrpj;
+        baseFaturamentoCsll = receitaLiquidaAtividade * percCsll;
+        baseIrpj = baseFaturamentoIrpj + outrasReceitas;
+        baseCsll = baseFaturamentoCsll + outrasReceitas;
+        regraTexto = `Lucro Presumido: IRPJ = (faturamento - retenções) × ${(percIrpj * 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}% + outras receitas. CSLL = (faturamento - retenções) × ${(percCsll * 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}% + outras receitas.`;
+      } else {
+        const lucroBase = receitaTotal - custosDespesas;
+        baseIrpj = Math.max(lucroBase + adicoes - exclusoes, 0);
+        baseCsll = Math.max(lucroBase + adicoes - exclusoes, 0);
+        baseFaturamentoIrpj = baseIrpj;
+        baseFaturamentoCsll = baseCsll;
+        percIrpj = 1;
+        percCsll = 1;
+        regraTexto = 'Lucro Real: base de IRPJ e CSLL = receita bruta - retenções + outras receitas - custos/despesas + adições - exclusões/compensações.';
+      }
+
+      const irpj = calcularIRPJ(baseIrpj, limiteAdicionalIrpj, aliquotaAdicionalIrpj);
+      const csll = calcularCSLL(baseCsll, aliquotaCsll);
+      const totalCreditosReal = regime === 'real' ? calcularTotalCreditosReal() : 0;
+      const totalBruto = irpj.valor + csll.valor;
+      const total = Math.max(totalBruto - totalCreditosReal, 0);
+      const valorOriginalCota = total / 3;
+      const cota1 = valorOriginalCota;
+      const cota2 = valorOriginalCota * 1.01;
+      const cota3 = valorOriginalCota * 1.02;
+      const totalParcelado = cota1 + cota2 + cota3;
+      const totalJurosParcelamento = totalParcelado - total;
+
+      el('kpiReceita').textContent = formatCurrency(receitaTotal);
+      el('resReceitaBruta').textContent = formatCurrency(faturamento);
+      el('resRetencoes').textContent = formatCurrency(retencoes);
+      el('kpiRegime').textContent = regime === 'real' ? 'Lucro Real' : 'Lucro Presumido';
+      el('kpiPeriodicidade').textContent = periodicidade === 'mensal' ? 'Mensal' : 'Trimestral';
+      el('kpiReferencia').textContent = referencia;
+
+      el('resBaseIrpj').textContent = formatCurrency(baseIrpj);
+      el('resBaseCsll').textContent = formatCurrency(baseCsll);
+      el('resIrpj').textContent = formatCurrency(irpj.valor);
+      el('resCsll').textContent = formatCurrency(csll.valor);
+      el('resCreditosReal').textContent = formatCurrency(totalCreditosReal);
+      el('totalCreditosReal').textContent = formatCurrency(totalCreditosReal);
+      el('resTotal').textContent = formatCurrency(total);
+      el('cota1Original').textContent = formatCurrency(valorOriginalCota);
+      el('cota2Original').textContent = formatCurrency(valorOriginalCota);
+      el('cota3Original').textContent = formatCurrency(valorOriginalCota);
+      el('cota1Valor').textContent = formatCurrency(cota1);
+      el('cota2Valor').textContent = formatCurrency(cota2);
+      el('cota3Valor').textContent = formatCurrency(cota3);
+      el('totalOriginalParcelado').textContent = formatCurrency(total);
+      el('totalJurosParcelamento').textContent = formatCurrency(totalJurosParcelamento);
+      el('totalParcelado').textContent = formatCurrency(totalParcelado);
+      el('mensagemParcelamento').textContent = `Total líquido do imposto: ${formatCurrency(total)}. Em 3 cotas, cada parcela original seria de ${formatCurrency(valorOriginalCota)}. A 2ª cota recebe acréscimo de 1% e a 3ª cota recebe acréscimo de 2%, totalizando ${formatCurrency(totalParcelado)}.`;
+
+      el('baseIrpjTabela').textContent = formatCurrency(baseIrpj);
+      el('baseCsllTabela').textContent = formatCurrency(baseCsll);
+      el('presuncaoIrpjTabela').textContent = regime === 'presumido' ? formatPercent(percIrpj * 100) : '100,00%';
+      el('presuncaoCsllTabela').textContent = regime === 'presumido' ? formatPercent(percCsll * 100) : '100,00%';
+      el('aliqIrpj').textContent = irpj.aliquotaTexto;
+      el('aliqCsll').textContent = csll.aliquotaTexto;
+      el('valorIrpjTabela').textContent = formatCurrency(irpj.valor);
+      el('valorCsllTabela').textContent = formatCurrency(csll.valor);
+
+      el('detFaturamentoIrpj').textContent = formatCurrency(faturamento);
+      el('detRetencoesIrpj').textContent = formatCurrency(retencoes);
+      el('detReceitaLiquidaIrpj').textContent = formatCurrency(receitaLiquidaAtividade);
+      el('detPercIrpj').textContent = regime === 'presumido' ? formatPercent(percIrpj * 100) : '100,00%';
+      el('detBaseFaturamentoIrpj').textContent = formatCurrency(baseFaturamentoIrpj);
+      el('detOutrasIrpj').textContent = regime === 'presumido' ? formatCurrency(outrasReceitas) : 'Já incluso na receita total';
+      el('detBaseFinalIrpj').textContent = formatCurrency(baseIrpj);
+
+      el('detFaturamentoCsll').textContent = formatCurrency(faturamento);
+      el('detRetencoesCsll').textContent = formatCurrency(retencoes);
+      el('detReceitaLiquidaCsll').textContent = formatCurrency(receitaLiquidaAtividade);
+      el('detPercCsll').textContent = regime === 'presumido' ? formatPercent(percCsll * 100) : '100,00%';
+      el('detBaseFaturamentoCsll').textContent = formatCurrency(baseFaturamentoCsll);
+      el('detOutrasCsll').textContent = regime === 'presumido' ? formatCurrency(outrasReceitas) : 'Já incluso na receita total';
+      el('detBaseFinalCsll').textContent = formatCurrency(baseCsll);
+
+      const textoAdicional = irpj.adicional > 0
+        ? ` Houve adicional de IRPJ sobre excedente de ${formatCurrency(irpj.excedente)}, gerando ${formatCurrency(irpj.adicional)}.`
+        : ' Não houve adicional de IRPJ no período.';
+
+      const textoCreditosReal = regime === 'real' ? ` Créditos manuais informados: ${formatCurrency(totalCreditosReal)}. Total bruto: ${formatCurrency(totalBruto)}. Total líquido após créditos: ${formatCurrency(total)}.` : '';
+      el('mensagemRegras').textContent = `${regraTexto} Receita bruta: ${formatCurrency(faturamento)}. Retenções deduzidas: ${formatCurrency(retencoes)}. Receita total considerada após deduções: ${formatCurrency(receitaTotal)}.${textoAdicional}${textoCreditosReal}`;
+      el('saidaObservacoes').textContent = observacoesEl.value.trim() || 'Nenhuma observação informada.';
+
+      return {
+        referencia,
+        regime: regime === 'real' ? 'Lucro Real' : 'Lucro Presumido',
+        periodicidade: periodicidade === 'mensal' ? 'Mensal' : 'Trimestral',
+        receitaBruta: faturamento,
+        retencoes,
+        receitaTotal,
+        presuncaoIrpj: regime === 'presumido' ? formatPercent(percIrpj * 100) : '100,00%',
+        baseIrpj,
+        presuncaoCsll: regime === 'presumido' ? formatPercent(percCsll * 100) : '100,00%',
+        baseCsll,
+        irpj: irpj.valor,
+        csll: csll.valor,
+        creditosReal: totalCreditosReal,
+        totalBruto,
+        total,
+        valorOriginalCota,
+        cota1,
+        cota2,
+        cota3,
+        totalJurosParcelamento,
+        totalParcelado,
+        observacoes: observacoesEl.value.trim() || ''
+      };
+    }
+
+    function limpar() {
+      referenciaEl.value = '';
+      faturamentoEl.value = '';
+      retencoesEl.value = '0';
+      outrasReceitasEl.value = '0';
+      custosDespesasEl.value = '0';
+      adicoesEl.value = '0';
+      exclusoesEl.value = '0';
+      if (creditosRealBodyEl) {
+        creditosRealBodyEl.innerHTML = '';
+        adicionarLinhaCredito();
+      }
+      aliquotaCsllEl.value = '9';
+      aliquotaAdicionalIrpjEl.value = '10';
+      observacoesEl.value = '';
+      periodicidadeEl.value = 'trimestral';
+      limiteAdicionalIrpjEl.value = '60000';
+      updatePeriodicidadeDefaults();
+      updateVisibility();
+      calcular();
+    }
+
+    function exportarCSV() {
+      const dados = calcular();
+      const linhas = [
+        ['Campo', 'Valor'],
+        ['Referência', dados.referencia],
+        ['Regime', dados.regime],
+        ['Periodicidade', dados.periodicidade],
+        ['Receita Bruta', dados.receitaBruta],
+        ['Retenções Deduzidas', dados.retencoes],
+        ['Receita Total Após Retenções', dados.receitaTotal],
+        ['Percentual base IRPJ', dados.presuncaoIrpj],
+        ['Base IRPJ', dados.baseIrpj],
+        ['Percentual base CSLL', dados.presuncaoCsll],
+        ['Base CSLL', dados.baseCsll],
+        ['IRPJ', dados.irpj],
+        ['CSLL', dados.csll],
+        ['Créditos Lucro Real', dados.creditosReal],
+        ['Total bruto IRPJ + CSLL', dados.totalBruto],
+        ['Total líquido IRPJ + CSLL', dados.total],
+        ['Parcelamento - valor original por cota', dados.valorOriginalCota],
+        ['1ª cota - sem juros', dados.cota1],
+        ['2ª cota - com 1% de juros', dados.cota2],
+        ['3ª cota - com 2% de juros', dados.cota3],
+        ['Total de juros do parcelamento', dados.totalJurosParcelamento],
+        ['Total parcelado em 3 cotas', dados.totalParcelado],
+        ['Observações', dados.observacoes]
+      ];
+
+      const csv = linhas
+        .map(linha => linha.map(item => `"${String(item).replace(/"/g, '""')}"`).join(';'))
+        .join('\n');
+
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `conferencia_irpj_csll_${new Date().toISOString().slice(0,10)}.csv`;
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function exportarPDF() {
+      calcular();
+      window.print();
+    }
+
+    [
+      regimeEl, periodicidadeEl, referenciaEl, tipoAtividadeEl, faturamentoEl, retencoesEl, outrasReceitasEl,
+      custosDespesasEl, adicoesEl, exclusoesEl,
+      aliquotaCsllEl, limiteAdicionalIrpjEl, aliquotaAdicionalIrpjEl, observacoesEl
+    ].forEach(input => {
+      input.addEventListener('input', calcular);
+      input.addEventListener('change', calcular);
+    });
+
+    if (btnAdicionarCreditoEl) {
+      btnAdicionarCreditoEl.addEventListener('click', () => {
+        adicionarLinhaCredito();
+        calcular();
+      });
+    }
+
+    if (creditosRealBodyEl) {
+      creditosRealBodyEl.addEventListener('input', calcular);
+      creditosRealBodyEl.addEventListener('click', (event) => {
+        if (event.target.classList.contains('btnRemoverCredito')) {
+          event.target.closest('tr').remove();
+          garantirUmaLinhaCredito();
+          calcular();
+        }
+      });
+    }
+
+    regimeEl.addEventListener('change', () => {
+      updateVisibility();
+      calcular();
+    });
+
+    periodicidadeEl.addEventListener('change', () => {
+      updatePeriodicidadeDefaults();
+      calcular();
+    });
+
+    el('btnCalcular').addEventListener('click', calcular);
+    el('btnLimpar').addEventListener('click', limpar);
+    el('btnPdf').addEventListener('click', exportarPDF);
+    el('btnExcel').addEventListener('click', exportarCSV);
+
+    garantirUmaLinhaCredito();
+    updateVisibility();
+    updatePeriodicidadeDefaults();
+    calcular();
+  </script>
+</body>
+</html>
